@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   merge_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2022/11/13 00:47:08 by itan             ###   ########.fr       */
+/*   Created: 2022/11/13 00:38:51 by itan              #+#    #+#             */
+/*   Updated: 2022/11/13 00:53:17 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	put(void *content)
+void	merge_sort_push_swap(t_list **a, t_list **b, int size)
 {
-	ft_printf("%i\n", *(int *)content);
-}
+	t_list	*tmp;
 
-int	main(int ac, char const **av)
-{
-	t_list	*a;
-	t_list	*b;
-	int		i;
-	int		*content;
-
-	(void)b;
-	i = 0;
-	while (i < ac - 1)
+	if (size / 2 != 1)
+		merge_sort_push_swap(a, b, size / 2);
+	while (*a)
 	{
-		content = malloc(sizeof(int));
-		*content = ft_atoi(av[++i]);
-		ft_lstadd_back(&a, ft_lstnew(content));
+		ft_lstadd_front(b, ft_lstnew((*a)->content));
+		tmp = *a;
+		*a = (*a)->next;
+		free(tmp);
+		if (*(int *)((*a)->content) > *(int *)((*b)->content))
+		{
+			ft_lstadd_front(b, ft_lstnew((*a)->content));
+			tmp = *a;
+			*a = (*a)->next;
+			free(tmp);
+		}
+		else
+		{
+		}
 	}
-	ft_lstiter(a, &put);
-	return (0);
 }

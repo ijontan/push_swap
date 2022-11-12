@@ -6,7 +6,7 @@
 #    By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 20:55:16 by itan              #+#    #+#              #
-#    Updated: 2022/11/10 19:15:25 by itan             ###   ########.fr        #
+#    Updated: 2022/11/12 22:13:36 by itan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 RM		= rm -f
 INC		= $(addprefix -I , $(shell find includes -type d))
-LIB		= $(shell find lib -name '*.a')
+LIB		= -L./lib -lft
 
 # this is for debugging
 DNAME	= debug.out
@@ -44,10 +44,10 @@ $(DDIR)/%.o:	$(DDIR)/%.c
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME):	$(OBJ)
-			$(CC) $(CFLAGS) $(LIB) $(INC) -o $(NAME) $(OBJ)
+			$(CC) $(CFLAGS) $(OBJ) $(INC) -o $(NAME) $(LIB)
 
 $(DNAME):	$(SRC) $(DSRC)
-			$(CC) $(CFLAGS) $(DFLAGS) $(INC) $(SRC) $(DSRC) -o $(DNAME)
+			$(CC) $(CFLAGS) $(DFLAGS) $(INC) $(SRC) $(DSRC) -o $(DNAME) $(LIB)
 
 debug:	$(DNAME)
 

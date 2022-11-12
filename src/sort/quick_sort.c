@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:30:16 by itan              #+#    #+#             */
-/*   Updated: 2022/11/10 21:54:31 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/12 22:59:15 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ static void	swap(int *a, int *b)
 	*b = tmp;
 }
 
-static size_t	partition(int *lst, size_t lo, size_t hi)
+static ssize_t	partition(int *lst, ssize_t lo, ssize_t hi)
 {
-	size_t	i;
-	size_t	j;
+	ssize_t	i;
+	ssize_t	j;
 	int		pivot;
 
 	pivot = lst[(lo + hi) / 2];
@@ -42,14 +42,14 @@ static size_t	partition(int *lst, size_t lo, size_t hi)
 	}
 }
 
-void	quick_sort(int *lst, size_t lo, size_t hi)
+void	quick_sort(int *lst, ssize_t lo, ssize_t hi)
 {
-	size_t	p;
+	ssize_t	p;
 
-	if (lo >= 0 && hi >= 0 && hi > lo)
+	if (hi > lo)
 	{
 		p = partition(lst, lo, hi);
 		quick_sort(lst, lo, p);
-		quick_sort(lst, p, hi);
+		quick_sort(lst, p + 1, hi);
 	}
 }
