@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2022/11/13 00:47:08 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/16 21:11:12 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	main(int ac, char const **av)
 	t_list	*b;
 	int		i;
 	int		*content;
+	int		count;
 
+	count = 0;
 	(void)b;
 	i = 0;
 	while (i < ac - 1)
@@ -32,6 +34,7 @@ int	main(int ac, char const **av)
 		*content = ft_atoi(av[++i]);
 		ft_lstadd_back(&a, ft_lstnew(content));
 	}
+	radix_sort_ps(&a, &b, &count, ft_lstsize(a));
 	ft_lstiter(a, &put);
 	return (0);
 }

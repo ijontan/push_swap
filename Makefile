@@ -6,7 +6,7 @@
 #    By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 20:55:16 by itan              #+#    #+#              #
-#    Updated: 2022/11/12 22:13:36 by itan             ###   ########.fr        #
+#    Updated: 2022/11/16 16:49:29 by itan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 RM		= rm -f
 INC		= $(addprefix -I , $(shell find includes -type d))
-LIB		= -L./lib -lft
+LIB		= -Llib -lft
 
 # this is for debugging
 DNAME	= debug.out
