@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:50:29 by itan              #+#    #+#             */
-/*   Updated: 2022/11/16 21:10:21 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/22 17:31:10 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	rrb(t_list **b, int *count);
 void	sa(t_list **a, int *count);
 void	sb(t_list **b, int *count);
 
+void	merge_sort_ps(t_list **a, t_list **b, int *count, int num);
 #endif
