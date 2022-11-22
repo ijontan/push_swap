@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   ft_log2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 00:55:52 by itan              #+#    #+#             */
-/*   Updated: 2022/11/22 22:39:59 by itan             ###   ########.fr       */
+/*   Created: 2022/11/23 00:17:36 by itan              #+#    #+#             */
+/*   Updated: 2022/11/23 00:28:15 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-static void	push(t_list **from, t_list **to)
+int	ft_log2(int num)
 {
-	t_list	*tmp;
+	int	dst;
 
-	if (!*from)
-		return ;
-	tmp = *from;
-	*from = (*from)->next;
-	tmp->next = NULL;
-	ft_lstadd_front(to, tmp);
-}
-
-void	pa(t_list **a, t_list **b, int *count)
-{
-	if (!*a)
-		return ;
-	push(a, b);
-	(*count)++;
-}
-
-void	pb(t_list **a, t_list **b, int *count)
-{
-	if (!*b)
-		return ;
-	push(b, a);
-	(*count)++;
+	dst = 0;
+	while (num > 0)
+	{
+		num = num >> 1;
+		dst++;
+	}
+	return (dst);
 }

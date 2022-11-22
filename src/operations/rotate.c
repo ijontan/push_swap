@@ -6,13 +6,13 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:38:05 by itan              #+#    #+#             */
-/*   Updated: 2022/11/16 21:13:17 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/23 01:07:23 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	rotate(t_list **list, unsigned char reversed)
+void	rotate(t_list **list, unsigned char reversed)
 {
 	t_list	*tmp;
 	t_list	*item;
@@ -21,13 +21,14 @@ static void	rotate(t_list **list, unsigned char reversed)
 		return ;
 	if (reversed)
 	{
+		if ((*list)->next == NULL)
+			return ;
 		item = ft_lstlast(*list);
-		*list = (*list)->next;
 		tmp = *list;
-		ft_lstadd_front(list, item);
 		while (tmp->next != item)
 			tmp = tmp->next;
 		tmp->next = NULL;
+		ft_lstadd_front(list, item);
 	}
 	else
 	{

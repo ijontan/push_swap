@@ -6,71 +6,71 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:24:52 by itan              #+#    #+#             */
-/*   Updated: 2022/11/16 21:09:38 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/23 01:10:56 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	power(int num, int power)
+int	get_biggest_num(t_list *list)
 {
-	int	dst;
+	int	num;
 
-	if (!num)
-		return (0);
-	if (!power)
-		return (1);
-	dst = num;
-	while (--power > 0)
-		dst *= num;
-	return (dst);
+	num = *((int *)(list->content));
+	while (list)
+	{
+		if (num < *((int *)(list->content)))
+			num = *((int *)(list->content));
+		list = list->next;
+	}
+	return (num);
 }
 
-void	sort_tob(t_list **a, t_list **b, int *count, int isobit)
+int	sort_tob(t_list **a, t_list **b, int size, int power)
 {
-	if (isobit)
-		pa(a, b, count);
-	else
+	int	count;
+	int	isobit;
+	int	j;
+
+	j = 0;
+	while (j < size)
 	{
-		pa(a, b, count);
-		rb(b, count);
+		isobit = (*((int *)(*a)->content)) & power;
+		isobit = isobit == power;
+		if (isobit)
+			pa(a, b, &count);
+		else
+			ra(a, &count);
+		j++;
 	}
+	return (count);
 }
 
-void	sort_toa(t_list **a, t_list **b, int *count, int isobit)
+int	sort_merge(t_list **a, t_list **b)
 {
-	if (isobit)
-		pb(a, b, count);
-	else
+	int	count;
+
+	while (*b)
 	{
-		pb(a, b, count);
-		ra(a, count);
+		rrb(b, &count);
+		pb(a, b, &count);
+		ra(a, &count);
 	}
+	return (count);
 }
 
 void	radix_sort_ps(t_list **a, t_list **b, int *count, int size)
 {
-	int	isobit;
+	int	max_n_radix;
 	int	i;
-	int	j;
 
-	j = -1;
-	while (++j < size)
-		sort_tob(a, b, count, *((int *)(*a)->content) >= 0);
-	i = 7;
-	while (i >= 0)
+	i = 0;
+	max_n_radix = ft_log2(get_biggest_num(*a));
+	(void)max_n_radix;
+	while (i <= 32)
 	{
-		j = 0;
-		while (j < size)
-		{
-			isobit = *((int *)(*a)->content) & power(2, i);
-			isobit = isobit > i - 1;
-			if (i % 2 == 0)
-				sort_tob(a, b, count, isobit);
-			else
-				sort_toa(a, b, count, isobit);
-			j++;
-		}
-		i--;
+		*count += sort_tob(a, b, size, power(2, i));
+		*count += sort_merge(a, b);
+		i++;
 	}
 }

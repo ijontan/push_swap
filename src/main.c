@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2022/11/22 17:31:52 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/23 00:13:33 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int	main(int ac, char const **av)
 	ft_printf("\nb:  ");
 	ft_lstiter(b, &put);
 	ft_printf("\n");
+	ft_printf("count:  %i\n", count);
 	return (0);
 }

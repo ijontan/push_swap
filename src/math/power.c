@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   power.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 00:55:52 by itan              #+#    #+#             */
-/*   Updated: 2022/11/22 22:39:59 by itan             ###   ########.fr       */
+/*   Created: 2022/11/23 00:16:58 by itan              #+#    #+#             */
+/*   Updated: 2022/11/23 00:19:20 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-static void	push(t_list **from, t_list **to)
+int	power(int num, int power)
 {
-	t_list	*tmp;
+	int	dst;
 
-	if (!*from)
-		return ;
-	tmp = *from;
-	*from = (*from)->next;
-	tmp->next = NULL;
-	ft_lstadd_front(to, tmp);
-}
-
-void	pa(t_list **a, t_list **b, int *count)
-{
-	if (!*a)
-		return ;
-	push(a, b);
-	(*count)++;
-}
-
-void	pb(t_list **a, t_list **b, int *count)
-{
-	if (!*b)
-		return ;
-	push(b, a);
-	(*count)++;
+	if (!num)
+		return (0);
+	if (!power)
+		return (1);
+	dst = num;
+	while (--power > 0)
+		dst *= num;
+	return (dst);
 }
