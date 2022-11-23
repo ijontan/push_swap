@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 00:38:51 by itan              #+#    #+#             */
-/*   Updated: 2022/11/16 20:22:44 by itan             ###   ########.fr       */
+/*   Updated: 2022/11/23 13:48:46 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	merge_sort_ps(t_list **a, t_list **b, int *count, int num)
 	if (num > 2)
 	{
 		merge_sort_ps(a, b, count, num / 2);
-		merge_sort_ps(a, b, count, num - num / 2);
+		merge_sort_ps(a, b, count, num / 2 + 1);
 		if ((*a)->content > ft_lstlast(*a)->content)
 			sa(a, count);
 		else
