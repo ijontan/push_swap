@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:24:52 by itan              #+#    #+#             */
-/*   Updated: 2022/11/23 21:04:26 by itan             ###   ########.fr       */
+/*   Updated: 2022/12/13 14:54:49 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ int	sort_merge(t_list **a, t_list **b)
 {
 	int	count;
 
-	int len = lst
-		while (*b)
+	while (*b)
 	{
 		rrb(b, &count);
 		pb(a, b, &count);
