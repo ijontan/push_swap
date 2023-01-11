@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:24:52 by itan              #+#    #+#             */
-/*   Updated: 2022/12/13 14:54:49 by itan             ###   ########.fr       */
+/*   Updated: 2022/12/13 18:50:58 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	radix_sort_ps(t_list **a, t_list **b, int *count, int size)
 
 	i = 0;
 	max_n_radix = ft_log2(get_biggest_num(*a));
-	(void)max_n_radix;
-	while (i <= 32)
+	while (i <= max_n_radix)
 	{
 		*count += sort_tob(a, b, size, power(2, i));
 		*count += sort_merge(a, b);
