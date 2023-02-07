@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 00:55:52 by itan              #+#    #+#             */
-/*   Updated: 2022/11/22 22:39:59 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/07 16:04:57 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	pa(t_list **a, t_list **b, int *count)
 		return ;
 	push(a, b);
 	(*count)++;
+	ft_printf("pa");
 }
 
 void	pb(t_list **a, t_list **b, int *count)
@@ -38,4 +39,5 @@ void	pb(t_list **a, t_list **b, int *count)
 		return ;
 	push(b, a);
 	(*count)++;
+	ft_printf("pb");
 }

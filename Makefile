@@ -6,7 +6,7 @@
 #    By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/18 20:55:16 by itan              #+#    #+#              #
-#    Updated: 2022/11/16 16:49:29 by itan             ###   ########.fr        #
+#    Updated: 2023/02/07 17:16:05 by itan             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,10 @@ CC		= gcc
 CFLAGS	= -Wall -Werror -Wextra
 RM		= rm -f
 INC		= $(addprefix -I , $(shell find includes -type d))
-LIB		= -Llib -lft
 
+LIBDIR	= libft
+LIB		= -L$(LIBDIR) -lft
+LIBNAME	= libft.a
 # this is for debugging
 DNAME	= debug.out
 DDIR	= test
@@ -43,11 +45,14 @@ $(DDIR)/%.o:	$(DDIR)/%.c
 				@mkdir -p $(DDIR)
 				$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-$(NAME):	$(OBJ)
+$(NAME):	$(LIBDIR)/$(LIBNAME) $(OBJ) 
 			$(CC) $(CFLAGS) $(OBJ) $(INC) -o $(NAME) $(LIB)
 
-$(DNAME):	$(SRC) $(DSRC)
+$(DNAME):	$(SRC) $(DSRC) $(LIBDIR)/$(LIBNAME)
 			$(CC) $(CFLAGS) $(DFLAGS) $(INC) $(SRC) $(DSRC) -o $(DNAME) $(LIB)
+
+$(LIBDIR)/$(LIBNAME):
+		cd $(LIBDIR) && make 
 
 debug:	$(DNAME)
 
