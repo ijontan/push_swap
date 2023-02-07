@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:22:09 by itan              #+#    #+#             */
-/*   Updated: 2022/11/16 21:12:41 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/07 17:49:31 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static void	swap(t_list **lst)
 	*lst = tmp;
 }
 
-void	sa(t_list **a, int *count)
+void	sa(t_list **a)
 {
 	if (!*a && !(*a)->next)
 		return ;
 	swap(a);
-	(*count)++;
+	ft_printf("sa");
 }
 
-void	sb(t_list **b, int *count)
+void	sb(t_list **b)
 {
 	if (!*b && !(*b)->next)
 		return ;
 	swap(b);
-	(*count)++;
+	ft_printf("sb");
 }

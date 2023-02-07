@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:38:05 by itan              #+#    #+#             */
-/*   Updated: 2022/11/23 01:07:23 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/07 17:48:40 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,34 +40,34 @@ void	rotate(t_list **list, unsigned char reversed)
 	}
 }
 
-void	ra(t_list **a, int *count)
+void	ra(t_list **a)
 {
 	if (!*a)
 		return ;
 	rotate(a, 0);
-	(*count)++;
+	ft_printf("ra");
 }
 
-void	rb(t_list **b, int *count)
+void	rb(t_list **b)
 {
 	if (!*b)
 		return ;
 	rotate(b, 0);
-	(*count)++;
+	ft_printf("rb");
 }
 
-void	rra(t_list **a, int *count)
+void	rra(t_list **a)
 {
 	if (!*a)
 		return ;
 	rotate(a, 1);
-	(*count)++;
+	ft_printf("rra");
 }
 
-void	rrb(t_list **b, int *count)
+void	rrb(t_list **b)
 {
 	if (!*b)
 		return ;
 	rotate(b, 1);
-	(*count)++;
+	ft_printf("rra");
 }

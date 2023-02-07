@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 00:55:52 by itan              #+#    #+#             */
-/*   Updated: 2023/02/07 16:04:57 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/07 17:48:42 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,18 @@ static void	push(t_list **from, t_list **to)
 	ft_lstadd_front(to, tmp);
 }
 
-void	pa(t_list **a, t_list **b, int *count)
+void	pa(t_list **a, t_list **b)
 {
 	if (!*a)
 		return ;
 	push(a, b);
-	(*count)++;
 	ft_printf("pa");
 }
 
-void	pb(t_list **a, t_list **b, int *count)
+void	pb(t_list **a, t_list **b)
 {
 	if (!*b)
 		return ;
 	push(b, a);
-	(*count)++;
 	ft_printf("pb");
 }

@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:24:52 by itan              #+#    #+#             */
-/*   Updated: 2022/12/13 18:50:58 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/07 17:52:05 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,8 @@ int	get_biggest_num(t_list *list)
 	return (num);
 }
 
-int	sort_tob(t_list **a, t_list **b, int size, int power)
+void	sort_tob(t_list **a, t_list **b, int size, int power)
 {
-	int	count;
 	int	isobit;
 	int	j;
 
@@ -38,28 +37,24 @@ int	sort_tob(t_list **a, t_list **b, int size, int power)
 		isobit = (*((int *)(*a)->content)) & power;
 		isobit = isobit == power;
 		if (isobit)
-			pa(a, b, &count);
+			pa(a, b);
 		else
-			ra(a, &count);
+			ra(a);
 		j++;
 	}
-	return (count);
 }
 
-int	sort_merge(t_list **a, t_list **b)
+void	sort_merge(t_list **a, t_list **b)
 {
-	int	count;
-
 	while (*b)
 	{
-		rrb(b, &count);
-		pb(a, b, &count);
-		ra(a, &count);
+		rrb(b);
+		pb(a, b);
+		ra(a);
 	}
-	return (count);
 }
 
-void	radix_sort_ps(t_list **a, t_list **b, int *count, int size)
+void	radix_sort_ps(t_list **a, t_list **b, int size)
 {
 	int	max_n_radix;
 	int	i;
@@ -68,8 +63,8 @@ void	radix_sort_ps(t_list **a, t_list **b, int *count, int size)
 	max_n_radix = ft_log2(get_biggest_num(*a));
 	while (i <= max_n_radix)
 	{
-		*count += sort_tob(a, b, size, power(2, i));
-		*count += sort_merge(a, b);
+		sort_tob(a, b, size, power(2, i));
+		sort_merge(a, b);
 		i++;
 	}
 }
