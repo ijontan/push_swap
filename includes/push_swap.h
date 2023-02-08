@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:50:29 by itan              #+#    #+#             */
-/*   Updated: 2023/02/07 17:50:32 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/08 16:58:04 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
-void	quick_sort(t_list *a, t_list *b);
+void	quick_sort(t_list *a, t_list *b, int top_len, int bot_len);
 
 /* ---------------------------------- sort ---------------------------------- */
 void	radix_sort_ps(t_list **a, t_list **b, int size);
