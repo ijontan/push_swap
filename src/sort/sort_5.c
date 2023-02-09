@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_5.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 00:55:52 by itan              #+#    #+#             */
-/*   Updated: 2023/02/09 15:30:24 by itan             ###   ########.fr       */
+/*   Created: 2023/02/09 16:57:56 by itan              #+#    #+#             */
+/*   Updated: 2023/02/09 18:02:57 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_list **from, t_list **to)
+void	sort_5(t_list **a, t_list **b)
 {
-	t_list	*tmp;
+	int	i;
 
-	if (!*from)
-		return ;
-	tmp = *from;
-	*from = (*from)->next;
-	tmp->next = NULL;
-	ft_lstadd_front(to, tmp);
-}
-
-void	pa(t_list **a, t_list **b)
-{
-	if (!*a)
-		return ;
-	push(a, b);
-	ft_printf("pa\n");
-}
-
-void	pb(t_list **a, t_list **b)
-{
-	if (!*b)
-		return ;
-	push(b, a);
-	ft_printf("pb\n");
+	pa(a, b);
+	pa(a, b);
+	sort_3(a);
+	i = 0;
+	if (*(int *)((*b)->content) > *(int *)((*b)->next->content))
+		sb(b);
+	while (*b)
+	{
+		if (*(int *)((*b)->content) < *(int *)((*a)->content))
+			if (*(int *)((*b)->content) > *(int *)(ft_lstlast(*a)->content))
+				pb(a, b);
+		ra(a);
+		i++;
+	}
+	while (*(int *)((*a)->content) > *(int *)(ft_lstlast(*a)->content))
+		ra(a);
 }

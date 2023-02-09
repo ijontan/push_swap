@@ -9,11 +9,7 @@
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/debug.out",
-      "args": [
-        " %012d ",
-        "ijon",
-        "42000"
-      ],
+      "args": ["7", "3", "5", "1", "2"],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
@@ -66,7 +62,7 @@
         "116",
         "117",
         "118",
-        "119",
+        "119"
       ],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

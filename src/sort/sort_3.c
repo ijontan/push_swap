@@ -1,41 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 00:55:52 by itan              #+#    #+#             */
-/*   Updated: 2023/02/09 15:30:24 by itan             ###   ########.fr       */
+/*   Created: 2023/02/09 16:35:07 by itan              #+#    #+#             */
+/*   Updated: 2023/02/09 17:01:02 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_list **from, t_list **to)
+void	sort_3(t_list **a)
 {
-	t_list	*tmp;
+	int	a1;
+	int	a2;
+	int	a3;
 
-	if (!*from)
+	a1 = *(int *)((*a)->content);
+	a2 = *(int *)((*a)->next->content);
+	a3 = *(int *)((*a)->next->next->content);
+	if (a1 > a2 && a1 < a3)
+		return (sa(a));
+	if (a1 < a2 && a1 > a3)
+		return (rra(a));
+	if (a1 > a2 && a1 > a3)
+	{
+		if (a2 > a3)
+		{
+			sa(a);
+			return (rra(a));
+		}
+		else
+			return (ra(a));
+	}
+	if (!(a1 < a2 && a1 < a3 && a2 > a3))
 		return ;
-	tmp = *from;
-	*from = (*from)->next;
-	tmp->next = NULL;
-	ft_lstadd_front(to, tmp);
-}
-
-void	pa(t_list **a, t_list **b)
-{
-	if (!*a)
-		return ;
-	push(a, b);
-	ft_printf("pa\n");
-}
-
-void	pb(t_list **a, t_list **b)
-{
-	if (!*b)
-		return ;
-	push(b, a);
-	ft_printf("pb\n");
+	sa(a);
+	ra(a);
 }

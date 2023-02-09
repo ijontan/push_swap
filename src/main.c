@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2023/02/08 17:31:40 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/09 17:59:01 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,18 @@
 void	put(void *content)
 {
 	ft_printf("%i, ", *(int *)content);
+}
+
+void	print(t_list *lst)
+{
+	if (!lst)
+		return (void)(ft_printf("null\n"));
+	while (lst)
+	{
+		put(lst->content);
+		lst = lst->next;
+	}
+	ft_printf("\n");
 }
 
 int	main(int ac, char const **av)
@@ -34,11 +46,16 @@ int	main(int ac, char const **av)
 		ft_lstadd_back(&a, ft_lstnew(content));
 	}
 	// radix_sort_ps(&a, &b, &count, ft_lstsize(a));
-	quick_sort(a, b, ft_lstsize(a), 0);
-	ft_printf("a:  ");
+	if (ft_lstsize(a) == 3)
+		sort_3(&a);
+	else if (ft_lstsize(a) == 5)
+		sort_5(&a, &b);
+	else
+		quick_sort(&a, &b, ft_lstsize(a), 0);
+	// ft_printf("a:  ");
 	ft_lstiter(a, &put);
-	ft_printf("\nb:  ");
-	ft_lstiter(b, &put);
-	ft_printf("\n");
+	// ft_printf("\nb:  ");
+	// ft_lstiter(b, &put);
+	// ft_printf("\n");
 	return (0);
 }
