@@ -6,56 +6,127 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:30:16 by itan              #+#    #+#             */
-/*   Updated: 2023/02/09 16:23:24 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/10 23:10:57 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	partition(t_list **a, t_list **b, int bot_len)
+int	find_average_of_part(t_list *lst, int len)
 {
-	long	val;
-	int		nbot_len;
+	int	val;
+	int	total;
 
-	nbot_len = 0;
-	if (*a != NULL)
-		val = *(int *)((*a)->content);
-	else
-		return (0);
-	while (bot_len > 0)
+	total = len;
+	val = 0;
+	while (len--)
 	{
-		if (*(int *)((*a)->content) <= val)
-			pa(a, b);
+		val += *(int *)(lst->content);
+		lst = lst->next;
+	}
+	return (val / total);
+}
+
+int	partition_from_a(t_list **a, t_list **b, int len)
+{
+	int	average;
+	int	number_pushed;
+	int	number_left;
+
+	number_pushed = 0;
+	number_left = 0;
+	average = find_average_of_part(*a, len);
+	while (len--)
+	{
+		if (*(int *)((*a)->content) < average)
+		{
+			pb(a, b);
+			number_pushed++;
+		}
 		else
 		{
 			ra(a);
-			nbot_len++;
+			number_left++;
 		}
-		bot_len--;
 	}
-	return (nbot_len);
+	while (number_left--)
+		rra(a);
+	return (number_pushed);
 }
 
-void	quick_sort(t_list **a, t_list **b, int len_a, int len_b)
+int	partition_from_b(t_list **a, t_list **b, int len)
 {
-	int	nlen_a;
-	int	nlen_b;
+	int	average;
+	int	number_pushed;
+	int	number_left;
 
-	if (len_a == 2)
-		return (sa(a));
-	if (len_a <= 1)
-		return ;
-	nlen_a = partition(a, b, len_a);
-	nlen_b = len_a + len_b - nlen_a;
-	quick_sort(a, b, nlen_a, 0);
-	len_b++;
-	while (len_b-- > 0)
+	number_pushed = 0;
+	number_left = 0;
+	average = find_average_of_part(*b, len);
+	while (len--)
 	{
-		pb(a, b);
-		len_a++;
+		if (*(int *)((*b)->content) > average)
+		{
+			pa(a, b);
+			number_pushed++;
+		}
+		else
+		{
+			rb(b);
+			number_left++;
+		}
 	}
-	nlen_a++;
-	while (nlen_a-- > 0)
-		rra(a);
-	quick_sort(a, b, 0, nlen_b);
+	while (number_left--)
+		rrb(b);
+	return (number_pushed);
+}
+
+int	partition(t_list **a, t_list **b, int len, int at_a)
+{
+	int	total_number_pushed;
+
+	if (at_a)
+		total_number_pushed = partition_from_a(a, b, len);
+	else
+		total_number_pushed = partition_from_b(a, b, len);
+	return (total_number_pushed);
+}
+
+void	quick_sort(t_list **a, t_list **b, int len, int at_a)
+{
+	int	len_pushed;
+
+	if (len <= 0)
+		return ;
+	if (len == 2)
+	{
+		if (at_a)
+			if (*(int *)((*a)->content) > *(int *)((*a)->next->content))
+				sa(a);
+		if (!at_a)
+		{
+			pa(a, b);
+			pa(a, b);
+			if (*(int *)((*a)->content) > *(int *)((*a)->next->content))
+				sa(a);
+		}
+		return ;
+	}
+	if (len == 1)
+	{
+		if (!at_a)
+			pa(a, b);
+		return ;
+	}
+	len_pushed = partition(a, b, len, at_a);
+	if (at_a)
+	{
+		quick_sort(a, b, len - len_pushed, at_a);
+		quick_sort(a, b, len_pushed, !at_a);
+	}
+	else
+	{
+		quick_sort(a, b, len_pushed, !at_a);
+		quick_sort(a, b, len - len_pushed, at_a);
+	}
 }

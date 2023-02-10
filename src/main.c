@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2023/02/09 17:59:01 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/10 23:20:30 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int	main(int ac, char const **av)
 	// radix_sort_ps(&a, &b, &count, ft_lstsize(a));
 	if (ft_lstsize(a) == 3)
 		sort_3(&a);
-	else if (ft_lstsize(a) == 5)
-		sort_5(&a, &b);
+	// else if (ft_lstsize(a) == 5)
+	// 	sort_5(&a, &b);
 	else
-		quick_sort(&a, &b, ft_lstsize(a), 0);
+		quick_sort(&a, &b, ft_lstsize(a), 1);
 	// ft_printf("a:  ");
 	ft_lstiter(a, &put);
 	// ft_printf("\nb:  ");
