@@ -2,6 +2,11 @@
   "C_Cpp.errorSquiggles": "Enabled",
   "files.associations": {
     "*.h": "cpp",
-    "algorithm": "c"
+    "algorithm": "c",
+    "random": "c",
+    "cwchar": "c",
+    "string": "c",
+    "string_view": "c",
+    "utility": "c"
   }
 }

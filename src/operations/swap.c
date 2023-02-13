@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 17:22:09 by itan              #+#    #+#             */
-/*   Updated: 2023/02/09 15:30:40 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/13 18:16:59 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,15 @@ void	sb(t_list **b)
 		return ;
 	swap(b);
 	ft_printf("sb\n ");
+}
+
+void	ss(t_list **a, t_list **b)
+{
+	if (!*a && !(*a)->next)
+		return ;
+	if (!*b && !(*b)->next)
+		return ;
+	swap(a);
+	swap(b);
+	ft_printf("ss\n");
 }

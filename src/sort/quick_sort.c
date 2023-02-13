@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:30:16 by itan              #+#    #+#             */
-/*   Updated: 2023/02/10 23:10:57 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/13 19:40:12 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ int	partition_from_a(t_list **a, t_list **b, int len)
 	int	average;
 	int	number_pushed;
 	int	number_left;
+	int	no_r;
 
+	no_r = len == ft_lstsize(*a);
 	number_pushed = 0;
 	number_left = 0;
 	average = find_average_of_part(*a, len);
@@ -50,7 +52,11 @@ int	partition_from_a(t_list **a, t_list **b, int len)
 		}
 	}
 	while (number_left--)
+	{
+		if (no_r)
+			continue ;
 		rra(a);
+	}
 	return (number_pushed);
 }
 
@@ -98,6 +104,8 @@ void	quick_sort(t_list **a, t_list **b, int len, int at_a)
 
 	if (len <= 0)
 		return ;
+	if (len == 4)
+		return (q_sort_4(a, b, at_a));
 	if (len == 2)
 	{
 		if (at_a)

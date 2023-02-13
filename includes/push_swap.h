@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:50:29 by itan              #+#    #+#             */
-/*   Updated: 2023/02/10 18:01:05 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/13 18:27:17 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "libft.h"
 
 void	quick_sort(t_list **a, t_list **b, int len, int at_a);
+void	q_sort_4(t_list **a, t_list **b, int at_a);
 /* ---------------------------------- sort ---------------------------------- */
 void	radix_sort_ps(t_list **a, t_list **b, int size);
 void	merge_sort_ps(t_list **a, t_list **b, int num);
@@ -37,10 +38,12 @@ void	rrr(t_list **a, t_list **b);
 
 void	sa(t_list **a);
 void	sb(t_list **b);
+void	ss(t_list **a, t_list **b);
 
 /* ---------------------------------- math ---------------------------------- */
 int		power(int num, int power);
 int		ft_log2(int num);
+int		find_average_of_part(t_list *lst, int len);
 
 /* ----------------------------------- put ---------------------------------- */
 void	print(t_list *lst);

@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2023/02/10 23:20:30 by itan             ###   ########.fr       */
+/*   Updated: 2023/02/13 19:25:12 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int ac, char const **av)
 	else
 		quick_sort(&a, &b, ft_lstsize(a), 1);
 	// ft_printf("a:  ");
-	ft_lstiter(a, &put);
+	// ft_lstiter(a, &put);
 	// ft_printf("\nb:  ");
 	// ft_lstiter(b, &put);
 	// ft_printf("\n");
