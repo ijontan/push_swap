@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:24:52 by itan              #+#    #+#             */
-/*   Updated: 2023/02/07 17:52:05 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/06 05:57:03 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	sort_tob(t_list **a, t_list **b, int size, int power)
 		isobit = (*((int *)(*a)->content)) & power;
 		isobit = isobit == power;
 		if (isobit)
-			pa(a, b);
+			pb(a, b);
 		else
 			ra(a);
 		j++;
@@ -49,7 +49,7 @@ void	sort_merge(t_list **a, t_list **b)
 	while (*b)
 	{
 		rrb(b);
-		pb(a, b);
+		pa(a, b);
 		ra(a);
 	}
 }
