@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 04:21:58 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 05:41:53 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:44:54 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,33 @@ void	q_sort_5(t_list **a, t_list **b)
 	q_sort_3(a, b, *(int *)(*b)->content < *(int *)(*b)->next->content);
 	while (number_pushed--)
 		pa(a, b);
+}
+
+int	find_average_of_part(t_list *lst, int len)
+{
+	int	val;
+	int	total;
+
+	total = len;
+	val = 0;
+	while (len--)
+	{
+		val += *(int *)(lst->content);
+		lst = lst->next;
+	}
+	return (val / total);
+}
+
+void	q_sort_2(t_list **a, t_list **b, int at_a)
+{
+	if (at_a)
+		if (*(int *)((*a)->content) > *(int *)((*a)->next->content))
+			sa(a);
+	if (!at_a)
+	{
+		pa(a, b);
+		pa(a, b);
+		if (*(int *)((*a)->content) > *(int *)((*a)->next->content))
+			sa(a);
+	}
 }

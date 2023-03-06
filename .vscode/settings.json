@@ -19,6 +19,16 @@
     "streambuf": "c",
     "functional": "c",
     "tuple": "c",
-    "initializer_list": "c"
+    "initializer_list": "c",
+    "__hash_table": "c",
+    "__split_buffer": "c",
+    "__tree": "c",
+    "bitset": "c",
+    "deque": "c",
+    "iterator": "c",
+    "map": "c",
+    "queue": "c",
+    "vector": "c",
+    "ratio": "c"
   }
 }

@@ -6,98 +6,64 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 23:08:00 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 03:15:49 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:30:58 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_biggest_num(t_list *list, int len_top, int len_bot)
+void	get_from_bot(t_list **a, t_list **b, t_insertion *data)
 {
-	int	num;
-	int	i;
-	int	mid_len;
-	int	sign;
+	data->biggest_num *= -1;
+	rrb(b);
+	data->len_top++;
+	data->len_bot--;
+	while (*((int *)((*b)->content)) != data->biggest_num)
+	{
+		rrb(b);
+		data->len_top++;
+		data->len_bot--;
+	}
+	if (*((int *)((*b)->content)) == data->biggest_num)
+	{
+		pa(a, b);
+		data->len_top--;
+	}
+}
 
-	sign = 1;
-	mid_len = ft_lstsize(list) - len_top - len_bot;
-	num = *((int *)(list->content));
-	i = 0;
-	if (mid_len == 0)
+void	get_from_top(t_list **a, t_list **b, t_insertion *data)
+{
+	if ((*b)->next)
+		if (*((int *)((*b)->next->content)) == data->biggest_num)
+			sb(b);
+	while (*((int *)((*b)->content)) != data->biggest_num)
 	{
-		len_top = ft_lstsize(list) / 2 + ft_lstsize(list) % 2;
-		len_bot = ft_lstsize(list) / 2;
+		rb(b);
+		data->len_top--;
+		data->len_bot++;
 	}
-	while (i++ < len_top)
+	if (*((int *)((*b)->content)) == data->biggest_num)
 	{
-		if (num < *((int *)(list->content)))
-			num = *((int *)(list->content));
-		list = list->next;
+		pa(a, b);
+		data->len_top--;
 	}
-	i = 0;
-	while (i++ < mid_len)
-		list = list->next;
-	i = 0;
-	while (i++ < len_bot)
-	{
-		if (num < *((int *)(list->content)))
-		{
-			num = *((int *)(list->content));
-			sign = -1;
-		}
-		list = list->next;
-	}
-	return (num * sign);
 }
 
 static void	is_b(t_list **a, t_list **b, int len)
 {
-	int	len_btop;
-	int	len_bbot;
-	int	i;
-	int	biggest_num;
+	int			i;
+	t_insertion	data;
 
 	i = 0;
-	len_btop = len;
-	len_bbot = 0;
+	data.len_top = len;
+	data.len_bot = 0;
 	while (i++ < len)
 	{
-		biggest_num = get_biggest_num(*b, len_btop, len_bbot);
-		if (biggest_num < 0)
-		{
-			biggest_num *= -1;
-			rrb(b);
-			len_btop++;
-			len_bbot--;
-			while (*((int *)((*b)->content)) != biggest_num)
-			{
-				rrb(b);
-				len_btop++;
-				len_bbot--;
-			}
-			if (*((int *)((*b)->content)) == biggest_num)
-			{
-				pa(a, b);
-				len_btop--;
-			}
-		}
+		data.biggest_num = get_biggest_val(*b, data.len_top, data.len_bot);
+		if (data.biggest_num < 0)
+			get_from_bot(a, b, &data);
 		else
-		{
-			if ((*b)->next)
-				if (*((int *)((*b)->next->content)) == biggest_num)
-					sb(b);
-			while (*((int *)((*b)->content)) != biggest_num)
-			{
-				rb(b);
-				len_btop--;
-				len_bbot++;
-			}
-			if (*((int *)((*b)->content)) == biggest_num)
-			{
-				pa(a, b);
-				len_btop--;
-			}
-		}
+			get_from_top(a, b, &data);
 	}
 }
 

@@ -6,28 +6,11 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 06:08:32 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:44:35 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	put(void *content)
-{
-	ft_printf("%i, ", *(int *)content);
-}
-
-void	print(t_list *lst)
-{
-	if (!lst)
-		return (void)(ft_printf("null\n"));
-	while (lst)
-	{
-		put(lst->content);
-		lst = lst->next;
-	}
-	ft_printf("\n");
-}
 
 void	print_both(t_list *a, t_list *b)
 {
@@ -50,7 +33,7 @@ void	print_both(t_list *a, t_list *b)
 	}
 }
 
-void	free_lst(t_list *lst)
+static void	free_lst(t_list *lst)
 {
 	t_list	*tmp;
 
@@ -63,26 +46,13 @@ void	free_lst(t_list *lst)
 	}
 }
 
-void	printlst(int *lst, int len)
+static void	create_list(int ac, char **av, t_list **a)
 {
 	int	i;
+	int	*lst;
+	int	*content;
 
 	i = 0;
-	while (i < len)
-		ft_printf("%i, \n", lst[i++]);
-}
-
-int	main(int ac, char const **av)
-{
-	t_list	*a;
-	t_list	*b;
-	int		i;
-	int		*content;
-	int		*lst;
-
-	i = 0;
-	b = NULL;
-	a = NULL;
 	lst = ft_calloc(ac - 1, sizeof(int));
 	while (++i < ac)
 		lst[i - 1] = ft_atoi(av[i]);
@@ -92,17 +62,26 @@ int	main(int ac, char const **av)
 	{
 		content = malloc(sizeof(int));
 		*content = lst[i++];
-		ft_lstadd_back(&a, ft_lstnew(content));
+		ft_lstadd_back(a, ft_lstnew(content));
 	}
 	free(lst);
+}
+
+int	main(int ac, char const **av)
+{
+	t_list	*a;
+	t_list	*b;
+
+	b = NULL;
+	a = NULL;
+	create_list(ac, (char **)av, &a);
 	if (ft_lstsize(a) == 3)
-		sort_3(&a);
+		sort_3(&a, &b, 0);
+	else if (ft_lstsize(a) == 5)
+		sort_5(&a, &b);
 	else if (ft_lstsize(a) <= 150)
 		sort_part(&a, &b);
-	// else if (ft_lstsize(a) == 5)
-	// 	sort_5(&a, &b);
 	else
-		// insertion_sort(&a, &b, ac - 1, 1);
 		quick_sort(&a, &b, ft_lstsize(a), 1);
 	free_lst(a);
 	free_lst(b);

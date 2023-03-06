@@ -6,13 +6,13 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 20:24:52 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 05:57:03 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:29:42 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_biggest_num(t_list *list)
+static int	get_biggest_num(t_list *list)
 {
 	int	num;
 

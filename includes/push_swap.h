@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 21:50:29 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 06:07:46 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/06 14:45:05 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,28 @@
 # define PUSH_SWAP_H
 # include "libft.h"
 
+typedef struct s_insertion
+{
+	int	len_top;
+	int	len_bot;
+	int	biggest_num;
+}		t_insertion;
+
 int		*indexing(int *a, int len);
 
 void	quick_sort(t_list **a, t_list **b, int len, int at_a);
+void	q_sort_2(t_list **a, t_list **b, int at_a);
 void	q_sort_4(t_list **a, t_list **b, int at_a);
 void	q_sort_3(t_list **a, t_list **b, int s_sb);
 void	q_sort_5(t_list **a, t_list **b);
+int		find_average_of_part(t_list *lst, int len);
 /* ---------------------------------- sort ---------------------------------- */
 void	insertion_sort(t_list **a, t_list **b, int len, int at_a);
+int		get_biggest_val(t_list *list, int len_top, int len_bot);
 void	sort_part(t_list **a, t_list **b);
 void	radix_sort_ps(t_list **a, t_list **b, int size);
 void	merge_sort_ps(t_list **a, t_list **b, int num);
-void	sort_3(t_list **a);
+void	sort_3(t_list **a, t_list **b, int s_sb);
 void	sort_5(t_list **a, t_list **b);
 
 /* ------------------------------- operations ------------------------------- */
