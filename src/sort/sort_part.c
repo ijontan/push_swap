@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 06:00:13 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 13:18:37 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/07 17:35:37 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ static void	push_rest(t_list **a, t_list **b)
 
 void	sort_part(t_list **a, t_list **b)
 {
-	int	size;
-
-	size = ft_lstsize(*a);
 	select_push(a, b, 15);
 	push_rest(a, b);
 	insertion_sort(a, b, ft_lstsize(*b), 0);
