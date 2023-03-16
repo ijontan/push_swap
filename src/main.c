@@ -6,7 +6,7 @@
 /*   By: itan <itan@student.42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 17:19:57 by itan              #+#    #+#             */
-/*   Updated: 2023/03/06 14:44:35 by itan             ###   ########.fr       */
+/*   Updated: 2023/03/16 17:18:31 by itan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	free_lst(t_list *lst)
 	}
 }
 
-static void	create_list(int ac, char **av, t_list **a)
+static int	create_list(int ac, char **av, t_list **a)
 {
 	int	i;
 	int	*lst;
@@ -57,6 +57,8 @@ static void	create_list(int ac, char **av, t_list **a)
 	while (++i < ac)
 		lst[i - 1] = ft_atoi(av[i]);
 	lst = indexing(lst, ac - 1);
+	if (!lst)
+		return (0);
 	i = 0;
 	while (i < ac - 1)
 	{
@@ -65,6 +67,7 @@ static void	create_list(int ac, char **av, t_list **a)
 		ft_lstadd_back(a, ft_lstnew(content));
 	}
 	free(lst);
+	return (1);
 }
 
 int	main(int ac, char const **av)
@@ -74,9 +77,16 @@ int	main(int ac, char const **av)
 
 	b = NULL;
 	a = NULL;
-	create_list(ac, (char **)av, &a);
-	if (ft_lstsize(a) == 3)
+	if (check_valid_input(ac, (char **)av))
+		return (1);
+	if (!create_list(ac, (char **)av, &a))
+		return (1);
+	if (ft_lstsize(a) == 2)
+		q_sort_2(&a, &b, 1);
+	else if (ft_lstsize(a) == 3)
 		sort_3(&a, &b, 0);
+	else if (ft_lstsize(a) == 4)
+		q_sort_4(&a, &b, 1);
 	else if (ft_lstsize(a) == 5)
 		sort_5(&a, &b);
 	else if (ft_lstsize(a) <= 150)
